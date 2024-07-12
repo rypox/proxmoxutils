@@ -22,3 +22,13 @@ checked_command: function(orig_cmd) {
 }
 ```
 See *remove_subscription_notice.sh* bash script for details how to do it.
+
+### install and run
+
+Copy the bash script *remove_subscription_notice.sh* to your proxmox instance and execute it.
+```bash
+scp remove_subscription_notice.sh root@my-proxmox-host:/root/
+ssh root@my-proxmox-host
+chmod +x remove_subscription_notice.sh
+./remove_subscription_notice.sh
+```
