@@ -7,7 +7,8 @@
 if grep --quiet "orig_cmd();return;" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js; then
         echo "fixed already, nothing to do"
 else
-        sed --regexp-extended --null-data --in-place=.bak "s/(function\(orig_cmd\) \{)/\1\n\torig_cmd\(\);return;/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+        date = $(date +%Y%m%d%H%M%S)
+        sed --regexp-extended --null-data --in-place="${date}.bak" "s/(function\(orig_cmd\) \{)/\1\n\torig_cmd\(\);return;/g" /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
         echo "function fixed, restarting pveproxy.service"
         systemctl restart pveproxy.service
 fi
